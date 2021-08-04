@@ -8,6 +8,7 @@ import { Demo as InputDemo } from '../Input/Input.Demo';
 import { Demo as LayoutDemo } from '../Layout/Layout.Demo';
 import { Demo as LinkDemo } from '../Link/Link.Demo';
 import { Demo as TextDemo } from '../Text/Text.Demo';
+import { Demo as AlertDemo } from '../Alert/Alert.Demo'
 
 import { LandingPage } from '../../views/LandingPage'
 import { NewAccount } from '../../views/NewAccount'
@@ -46,6 +47,10 @@ export const Demos = () => {
       <Route path="/demo/text"> 
         <TextDemo />
       </Route>
+
+      <Route path="/demo/alert"> 
+        <AlertDemo />
+      </Route>
     </Switch>
   )
 }
@@ -53,13 +58,13 @@ export const Demos = () => {
 const Auth = () => {
   return (
     <Switch>
-     
-        <Route path="/auth/login">
-          <SignIn />
+    
+        <Route path="/auth/newaccount">
+          <NewAccount />
         </Route>
 
-        <Route path="/auth/register">
-          <NewAccount />
+        <Route path="/auth/signin">
+          <SignIn />
         </Route>
 
         <Route path="/auth/reset">

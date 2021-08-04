@@ -16,20 +16,22 @@ const StyledTextField = styled(TextField)`
  *
  * @typedef {*} props
  * @property {string} label
+ * @property { string } value
  * @property {'text' | 'password' | 'email'} accepts
  * @property {(value: string) => void} onChange
  */
 
 export const Input = (props) => {
-  const { accepts } = props;
-  const handleChange = (e) => onchange(e.target.value);
+  const { accepts, onChange, label, value } = props;
+  const handleChange = (e) => onChange(e.target.value);
 
   return (
     <StyledTextField
-      {...props}
+      value={value}
+      label={label}
       onChange={handleChange}
       fullWidth
-      type={accepts}
+      inputProps = {{ type: accepts }}
       variant="filled"
     />
   );

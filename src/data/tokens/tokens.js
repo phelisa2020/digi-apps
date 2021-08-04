@@ -68,9 +68,6 @@ const text = {
     }
 }
 
-const shade= {
-
-}
 
 const highlight = {
     white: {

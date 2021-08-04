@@ -35,6 +35,7 @@ const Base = styled.div`
   padding-bottom: ${tokens.spacing.l};
   background-color: ${({ inverse }) =>
     inverse ? tokens.colors.blue.solid : tokens.highlight.white.solid};
+  min-height: 100vh;  
 `;
 
 // const Base = styled.div`
@@ -47,7 +48,7 @@ const Base = styled.div`
 //   color: ${({ inverse }) => inverse ? COLORS.whiteStronger : COLORS.blackStrong};
 // `;
 
-const Header = styled.header``;
+
 const Content = styled.div`
   flex-grow: 1;
   display: flex;
@@ -60,6 +61,10 @@ const Nested = styled.div`
   align-items: center;
 `;
 
+const NestedChildren = styled.div`
+  width: 100%;
+`
+
 const ButtonWrap = styled.div`
   padding: ${tokens.spacing.xs};
 `;
@@ -67,39 +72,40 @@ const LinkWrap = styled.div`
   padding: ${tokens.spacing.m} ${tokens.spacing.xs} ${tokens.spacing.xs};
 `;
 
+
+
 export const Layout = (props) => {
   const { children, title, inverse, extra, primary, secondary } = props;
   return (
     <Base inverse={inverse}>
-      <Header>
+      <header>
         <Text size="xl" component="h1">
           {title}
         </Text>
-      </Header>
+      </header>
  
       <Content>
         <Nested>
-          <div>{children}</div>
+          <NestedChildren>{children}</NestedChildren>
         </Nested>
 
         {secondary && (
           <ButtonWrap>
            
-            <Button full inverse={inverse}>123</Button>
+            <Button action={secondary[1]} inverse={inverse} full>{secondary[0]}</Button>
           </ButtonWrap>
         )}
         {primary && (
           <ButtonWrap>
             
-            <Button inverse={inverse} full importance="primary">
-              123
+            <Button action={primary[1]} inverse={inverse} full importance="primary">
+              {primary[0]}
             </Button>
           </ButtonWrap>
         )}
         {extra && (
           <LinkWrap>
-           
-            <Link inverse={inverse} >123</Link>
+            <Link action={extra[1]} inverse={inverse}>{extra[0]}</Link>
           </LinkWrap>
         )}
       </Content>
