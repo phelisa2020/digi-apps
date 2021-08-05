@@ -5,16 +5,28 @@ import { StylesProvider } from '@material-ui/styles';
 import { Routing } from './App.Routing'
 
 const Global = createGlobalStyle`
+html {
+  min-height: 100vh;
+  height: 100%;
+}
+
 body {
   overflow-x: hidden;
-  overflow-y: scroll;
+overflow-y: scroll;
+min-height: 100vh;
+height: 100%;
 }
-`
+
+#root {
+  min-height: 100vh;
+}
+`;
 
 export const App = () => {
   return (
     <StylesProvider injectFirst>
       <CssBaseline />
+      <Global />
       <Routing />
     </StylesProvider>
   )

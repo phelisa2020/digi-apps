@@ -5,7 +5,6 @@ import { tokens } from "../../data/tokens";
 import { Layout } from "../../components/Layout";
 import { useNewAccount } from "./NewAccount.useNewAccount";
 import { ALERT } from "./NewAccount.constants";
-import { Description } from "@material-ui/icons";
 
 const InputWrapper = styled.div`
   padding: ${tokens.spacing.s};
