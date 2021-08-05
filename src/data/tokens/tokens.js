@@ -100,6 +100,7 @@ export const images = {
 export const tokens = {
     spacing,
     text,
+    images,
     colors,
     opacity,
     radius,

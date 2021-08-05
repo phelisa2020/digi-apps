@@ -30,7 +30,7 @@ export const ALERTS = {
   },
   notVerified: {
     nature: 'error',
-    tittle: 'Email not verified',
+    tittle: 'Email not verified yet',
     description: 'An account for this email has been created, but the email has not been verified yet. Please check your inbox and span folders.',
   }
 };

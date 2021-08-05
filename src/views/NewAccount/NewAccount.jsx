@@ -1,16 +1,14 @@
 import React from "react";
 import styled from "styled-components";
+import { Layout } from "../../components/Layout";
 import { Input } from "../../components/Input";
 import { tokens } from "../../data/tokens";
-import { Layout } from "../../components/Layout";
 import { useNewAccount } from "./NewAccount.useNewAccount";
-import { ALERT } from "./NewAccount.constants";
+import { ALERTS } from "./NewAccount.constants";
 
 const InputWrapper = styled.div`
-  padding: ${tokens.spacing.s};
+  padding: ${tokens.spacing.s} 0;
 `;
-
-
 
 export const NewAccount = () => {
   const {
@@ -23,19 +21,17 @@ export const NewAccount = () => {
     createAccount,
     alert,
   } = useNewAccount();
-  const isResting = alert !== 'creating';
+
+ const isResting = alert !== 'creating';
 
   return (
-   
     <Layout
     form
       title="New Account"
-      alert={alert ? ALERT[alert] : undefined}
+      alert={alert ? ALERTS[alert] : undefined}
       secondary={["Cancel", isResting && "/"]}
-        primary={["Create Account", isResting && createAccount]}
+      primary={["Create Account", isResting && createAccount]}
     >
-
-
       <InputWrapper>
         <Input
           value={email}
@@ -44,6 +40,7 @@ export const NewAccount = () => {
           onChange={isResting && setEmail}
         />
       </InputWrapper>
+
       <InputWrapper>
         <Input
           value={password}
@@ -52,6 +49,7 @@ export const NewAccount = () => {
           onChange={isResting && setPassword}
         />
       </InputWrapper>
+
       <InputWrapper>
         <Input
           value={confirmPassword}
@@ -60,10 +58,7 @@ export const NewAccount = () => {
           onChange={isResting && setConfirmPassword}
         />
       </InputWrapper>
-
-    </Layout>
-    
+ </Layout>
   );
 };
-
 export default NewAccount;
