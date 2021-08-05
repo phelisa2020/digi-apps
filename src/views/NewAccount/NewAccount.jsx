@@ -4,11 +4,14 @@ import { Input } from "../../components/Input";
 import { tokens } from "../../data/tokens";
 import { Layout } from "../../components/Layout";
 import { useNewAccount } from "./NewAccount.useNewAccount";
-import { Alert } from "../../components/Alert";
+import { ALERT } from "./NewAccount.constants";
+import { Description } from "@material-ui/icons";
 
 const InputWrapper = styled.div`
   padding: ${tokens.spacing.s};
 `;
+
+
 
 export const NewAccount = () => {
   const {
@@ -21,29 +24,25 @@ export const NewAccount = () => {
     createAccount,
     alert,
   } = useNewAccount();
-
-  if (true) {
-    <Layout
-    title="New Account"
-    secondary={["Cancel", "/"]}
-    primary={["Create Account", createAccount, { disabled: true}]}
-  >
-      <Alert title="Checking details" nature="resolving"/>
-  </Layout>
-  }
+  const isResting = alert !== 'creating';
 
   return (
+   
     <Layout
+    form
       title="New Account"
-      secondary={["Cancel", "/"]}
-      primary={["Create Account", createAccount]}
+      alert={alert ? ALERT[alert] : undefined}
+      secondary={["Cancel", isResting && "/"]}
+        primary={["Create Account", isResting && createAccount]}
     >
+
+
       <InputWrapper>
         <Input
           value={email}
           label="Email"
           accepts="email"
-          onChange={console.log}
+          onChange={isResting && setEmail}
         />
       </InputWrapper>
       <InputWrapper>
@@ -51,7 +50,7 @@ export const NewAccount = () => {
           value={password}
           label="Password"
           accepts="password"
-          onChange={console.log}
+          onChange={isResting && setPassword}
         />
       </InputWrapper>
       <InputWrapper>
@@ -59,10 +58,12 @@ export const NewAccount = () => {
           value={confirmPassword}
           label="Confirm Password"
           accepts="password"
-          onChange={console.log}
+          onChange={isResting && setConfirmPassword}
         />
       </InputWrapper>
+
     </Layout>
+    
   );
 };
 

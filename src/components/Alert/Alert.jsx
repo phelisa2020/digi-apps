@@ -13,6 +13,7 @@ const SEVERITY_MAP = {
 
 const StyledAlert = styled(MuiAlert)`
   align-items: center;
+  text-align: left;
 `;
 
 const DescriptionWrapper = styled.div`
@@ -42,7 +43,7 @@ export const Alert = (props) => {
 
   return (
     <StyledAlert severity={severity} icon={icon}>
-      <Text size="m"> {title}</Text>
+      <Text size={description ? 'l' : 's'}>{title}</Text>
       {description && (
         <DescriptionWrapper>
           <Text size="s"> {description}</Text>

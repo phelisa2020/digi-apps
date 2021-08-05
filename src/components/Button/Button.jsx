@@ -68,6 +68,21 @@ const calcHover = ({ importance, inverse }) => {
   return tokens.colors.blue.stronger;
 };
 
+const calcActionProps = (action) => {
+  if (action === true) {
+    return { type: "submit" };
+  }
+
+  if (!action) {
+    return { disabled: true, type: "button" };
+  }
+
+  if (typeof action !== "string")
+    return { component: "button", onClick: action, type: "button" };
+
+  return { component: Link, to: action, type: "button" };
+};
+
 const StyledButton = styled(MuiButton)`
   color: ${calcColor};
   border: ${calcBorder};
@@ -90,23 +105,31 @@ const StyledButton = styled(MuiButton)`
  */
 
 /**
- * @name Button
- *
- * @description A way for a user to trigger an action in the app
- *
  * @param {props} props
+ * @returns {JSX.Element}
  */
 
 export const Button = (props) => {
-  const { children, importance = "secondary",
-    inverse = false, full =
-    false, action } = props;
+  const {
+    children,
+    importance = "secondary",
+    inverse,
+    full = false,
+    action,
+  } = props;
   const variant = importance === "primary" ? "contained" : "outlined";
+  const actionProps = calcActionProps(action);
 
   return (
-    <StyledButton componet={Link} to={action} size="large" importance=
-    {importance} inverse={inverse} variant={variant} full={full}>
-    {children}</StyledButton>
+    <StyledButton
+    inverse={inverse}
+    importance={importance}
+    children={children}
+    {...actionProps}
+    fullWidth={full}
+    variant={variant}
+    />
+     
   );
 };
 
