@@ -1,54 +1,85 @@
 import React from "react";
-import { Button } from "./Button";
 import styled from "styled-components";
+import { Button } from "./Button";
 import { tokens } from "../../data/tokens";
 
-
-const LightBackground = styled.div`
-  padding: 1rem;
-`;
-
-const DarkBackground = styled.div`
-  padding: 1rem;
-  background: ${tokens.colors.blue.solid};
+const DarkBg = styled.div`
+  width: 100%;
+  background: rgb(${tokens.colors.blue});
 `;
 
 export const Demo = () => {
   return (
     <div>
-      <LightBackground>
+      <div>
+        <Button> Hello World </Button>
+      </div>
+      <div>
+        <Button importance="secondary" action="#">
+        Hello World
+        </Button>
+      </div>
+      <div>
+        <Button importance="secondary" action="#" full>
+        Hello World
+        </Button>
+      </div>
+      <div>
+        <Button importance="primary" action="#">
+        Hello World
+        </Button>
+      </div>
+
+      <div>
+        <Button> Hello World</Button>
+      </div>
+      <div>
+        <Button importance="secondary"> Hello World </Button>
+      </div>
+      <div>
+        <Button importance="secondary" full>
+        Hello World
+        </Button>
+      </div>
+      <div>
+        <Button importance="primary"> Hello World </Button>
+      </div>
+
+      <DarkBg>
         <div>
-          <Button importance="primary">Hello World!</Button>
-          </div>
-          <div>
-          <Button importance="secondary">Hello World!</Button>
-          </div>
-          <Button importance="secondary" full>
-            Hello World!
-          </Button>
-        </LightBackground>
-
-        <DarkBackground>
-          <div>
-          <Button importance="primary" inverse>
-            Hello World!
-          </Button>
-          </div>
-          <div>
           <Button importance="secondary" inverse>
-            Hello World!
+          Hello World
           </Button>
-          </div>
-          <Button inverse full>
-            Hello World!
+        </div>
+        <div>
+          <Button importance="primary" inverse>
+          Hello World
           </Button>
+        </div>
+        <div>
+          <Button importance="primary" full inverse>
+          Hello World
+          </Button>
+        </div>
 
-        </DarkBackground>
+        <div>
+          <Button importance="secondary" action="#" inverse>
+          Hello World
+          </Button>
+        </div>
+        <div>
+          <Button importance="primary" action="#" inverse>
+          Hello World
+          </Button>
+        </div>
+        <div>
+          <Button importance="primary" action="#" full inverse>
+          Hello World
+          </Button>
+        </div>
+      </DarkBg>
     </div>
   );
 };
 
 export default Demo;
-
-
-       

@@ -1,4 +1,3 @@
- 
 import React from "react";
 import { HashRouter } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
@@ -12,12 +11,14 @@ html {
   min-height: 100vh;
   height: 100%;
 }
+
 body {
   overflow-x: hidden;
 overflow-y: scroll;
 min-height: 100vh;
 height: 100%;
 }
+
 #root {
   min-height: 100vh;
 }
@@ -39,5 +40,3 @@ export const App = () => {
 };
 
 export default App;
-
-

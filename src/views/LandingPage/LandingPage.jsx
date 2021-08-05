@@ -4,14 +4,13 @@ import { Layout } from '../../components/Layout'
 export const LandingPage = () => {
   return (
     <Layout
-      //inverse
-      title="Biz App"
+      inverse
+      title="Digi App"
       secondary={["Sign In", "/auth/signin"]}
-      primary={["Create Account", "/auth/newaccount"]}
+      primary={["Create Account", "/auth/register"]}
     />
      
   );
 };
 
 export default LandingPage;
-

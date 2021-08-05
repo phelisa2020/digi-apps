@@ -1,71 +1,47 @@
 import React from "react";
 import styled from "styled-components";
-import { tokens } from "../../data/tokens";
 import { Button as MuiButton } from "@material-ui/core";
+import { tokens } from "../../data/tokens";
 import { Link } from "react-router-dom";
 
-const calcColor = ({ importance, inverse }) => {
-  if (importance === "primary" && inverse) {
-    return tokens.colors.blue.solid;
-  }
-
-  if (inverse) {
-    return tokens.highlight.white.solid;
-  }
-
-  if (importance === "secondary") {
-    return tokens.colors.blue.solid;
-  }
-
-  return tokens.highlight.white.solid;
-};
-
-const calcBorder = ({ importance, inverse }) => {
-  if (importance === "primary" && inverse) {
-    return `0 solid ${tokens.highlight.white.none}`;
-  }
-
-  if (inverse) {
-    return `1px solid ${tokens.highlight.white.solid}`;
-  }
-
-  if (importance === "secondary") {
-    return `1px solid ${tokens.colors.blue.solid}`;
-  }
-
-  return `0 solid ${tokens.highlight.white.none}`;
+const COLORS = {
+  white: `rgb(${tokens.colors.white})`,
+  blue: `rgb(${tokens.colors.blue})`,
+  black: `rgb(${tokens.colors.black})`,
+  none: "transparent",
+  blueSubtler: `rgb(${tokens.colors.blue}, ${
+    (tokens.opacity.subtler)
+  })`,
+  blueStronger: `rgb(${tokens.colors.blue}, ${
+    (tokens.opacity.stronger)
+  })`,
+  whiteSubtler: `rgb(${tokens.colors.white}, ${tokens.opacity.subtler})`,
+  blackStronger: `rgb(${tokens.colors.white}, ${tokens.opacity.stronger})`,
 };
 
 const calcBackground = ({ importance, inverse }) => {
-  if (importance === "primary" && inverse) {
-    return tokens.highlight.white.solid;
-  }
+  if (importance === "primary" && inverse) return COLORS.white;
+  if (inverse || importance === "secondary") return COLORS.none;
+  return COLORS.blue;
+};
 
-  if (inverse) {
-    return tokens.highlight.white.none;
-  }
+const calcColor = ({ importance, inverse }) => {
+  if (importance === "primary" && inverse) return COLORS.blue;
+  if (inverse || importance === "primary") return COLORS.white;
+  return COLORS.blue;
+};
 
-  if (importance === "secondary") {
-    return tokens.colors.blue.none;
-  }
-
-  return tokens.colors.blue.solid;
+const calcBorder = ({ importance, inverse }) => {
+  if (importance === "primary") return `1px solid ${COLORS.none}`;
+  if (inverse) return `1px solid ${COLORS.white}`;
+  return `1px solid ${COLORS.blue}`;
 };
 
 const calcHover = ({ importance, inverse }) => {
-  if (importance === "primary" && inverse) {
-    return tokens.highlight.white.stronger;
-  }
-
-  if (inverse) {
-    return tokens.highlight.white.lighter;
-  }
-
-  if (importance === "secondary") {
-    return tokens.colors.blue.lighter;
-  }
-
-  return tokens.colors.blue.stronger;
+  if (importance === "primary" && inverse) return COLORS.whiteStronger;
+  if (inverse) return COLORS.whiteSubtler;
+  if (importance === "primary") return COLORS.blueStronger;
+  return COLORS.blueSubtler;
 };
 
 const calcActionProps = (action) => {
@@ -85,9 +61,9 @@ const calcActionProps = (action) => {
 
 const StyledButton = styled(MuiButton)`
   color: ${calcColor};
-  border: ${calcBorder};
   background: ${calcBackground};
-  width: ${({ full }) => (full ? "100%" : "auto")};
+  border: ${calcBorder};
+  padding: ${tokens.spacing.s};
 
   &:hover {
     background: ${calcHover};
@@ -95,12 +71,10 @@ const StyledButton = styled(MuiButton)`
 `;
 
 /**
- *
  * @typedef {object} props
  * @property {JSX.Element} children
  * @property {'primary' | 'secondary'} importance
  * @property {boolean} inverse
- * @property {boolean} full
  * @property {string | function} action
  */
 
@@ -112,24 +86,24 @@ const StyledButton = styled(MuiButton)`
 export const Button = (props) => {
   const {
     children,
-    importance = "secondary",
     inverse,
-    full = false,
+    importance = "secondary",
     action,
+    full = false,
   } = props;
+
   const variant = importance === "primary" ? "contained" : "outlined";
   const actionProps = calcActionProps(action);
 
   return (
     <StyledButton
-    inverse={inverse}
-    importance={importance}
-    children={children}
-    {...actionProps}
-    fullWidth={full}
-    variant={variant}
+      inverse={inverse}
+      importance={importance}
+      children={children}
+      {...actionProps}
+      fullWidth={full}
+      variant={variant}
     />
-     
   );
 };
 

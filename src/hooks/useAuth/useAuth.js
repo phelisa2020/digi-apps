@@ -1,8 +1,6 @@
-/* eslint-disable-next-line */
-import React, { useState, createContext, Context } from "react";
+import React, { useState, createContext } from "react";
 import { users } from "../../api/users";
 import { useMount } from "react-use";
-
 
 const checkIfConfirm = async () => {
   const { hash } = window.location;
@@ -29,7 +27,6 @@ const checkIfRecover = async () => {
 
     const recovery = await checkIfRecover();
     if (recovery) return setUser(recovery);
-
 
     const currentResponse = await users.getCurrent();
     if (currentResponse) return setUser(currentResponse);
@@ -82,14 +79,14 @@ const checkIfRecover = async () => {
 /**
  * @type {Context<auth>}
  */
- export const context = createContext();
 
- export const Provider = (props) => {
+export const context = createContext();
+
+export const Provider = (props) => {
   const { children } = props;
   const auth = useAuthInsideProvider();
 
   return <context.Provider value={auth}>{children}</context.Provider>;
 };
-
 
 export default context;

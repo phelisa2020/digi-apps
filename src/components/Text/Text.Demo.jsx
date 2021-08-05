@@ -3,104 +3,71 @@ import { Text } from "./Text";
 import styled from "styled-components";
 import { tokens } from "../../data/tokens";
 
-
-
-const LightBackground = styled.div`
-  padding: 1rem;
-`;
-
-const DarkBackground = styled.div`
-  padding: 1rem;
-  background: ${tokens.colors.blue.solid};
+const DarkBg = styled.div`
+  width: 100%;
+  background: rgb(${tokens.colors.blue});
 `;
 
 export const Demo = () => {
   return (
-    <div>    
-
-    <h2>Text</h2>
-    <LightBackground>
-      <Text size="s">
-          This is a title
+    <div>
+      <Text inverse size="s">
+      Hello World
+      </Text>
+      <Text inverse size="m">
+      Hello World
+      </Text>
+      <Text inverse size="l">
+      Hello World
+      </Text>
+      <Text inverse size="xl">
+      Hello World
       </Text>
 
-      <hr />
-
-      <Text size="m">
-      This is a title
+      <Text inverse size="s">
+      Hello World
       </Text>
-      <hr />
-
-      <Text size="l">
-          This is a title
+      <Text inverse size="m">
+      Hello World
       </Text>
-
-      <hr />
-      <Text size="xl">
-      This is a title
-      </Text>
-    </LightBackground>
-    <hr />
-
-    <LightBackground>
-      <Text size="s" importance="secondary">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+      <Text inverse size="l">
+      Hello World
       </Text>
 
-      <hr />
+      <DarkBg>
+        <Text inverse size="s">
+        Hello World
+        </Text>
+        <Text inverse size="m">
+        Hello World
+        </Text>
+        <Text inverse size="l">
+        Hello World
+        </Text>
+        <Text inverse size="xl">
+        Hello World
+        </Text>
 
-      <Text size="m" importance="secondary">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-      </Text>
-      <hr />
+        <Text inverse size="s">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis semper
+          eget justo nec bibendum. Donec commodo eu neque vel pharetra. Nunc
+        
+        </Text>
 
-      <Text size="l" importance="secondary">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-      </Text>
-    </LightBackground>
-    <hr />
+        <Text inverse size="m">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis semper
+          eget justo nec bibendum. Donec commodo eu neque vel pharetra. Nunc
+         
+        </Text>
 
-    <DarkBackground>
-      <Text size="s" inverse>
-      This is a title
-      </Text>
-      <hr />
-
-      <Text size="m" inverse>
-      This is a title
-      </Text>
-      <hr />
-
-      <Text size="l" inverse>
-      This is a title
-      </Text>
-      <hr />
-
-      <Text size="xl" inverse>
-      This is a title
-      </Text>
-    </DarkBackground>
-
-    <hr />
-
-    <DarkBackground>
-      <Text size="s" inverse importance="secondary">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-      </Text>
-      <hr />
-
-      <Text size="m" inverse importance="secondary">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-      </Text>
-      <hr />
-
-      <Text size="l" inverse importance="secondary">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-      </Text>
-    </DarkBackground>
-  </div>
-   )
-
+        <Text inverse size="l">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis semper
+          eget justo nec bibendum. Donec commodo eu neque vel pharetra. Nunc
+         
+        </Text>
+      </DarkBg>
+    </div>
+  );
 };
 
 export default Demo;

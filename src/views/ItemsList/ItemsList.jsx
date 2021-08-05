@@ -6,7 +6,8 @@ export const ItemsList = () => {
 
   return (
     <div>
-      <div>Logged In: {user ? JSON.stringify(user) : 'NO USER'}</div>
+      <h1>Your Page HERE!!!</h1>
+      <div> Logged In: {user ? JSON.stringify(user) : 'NO USER'}</div>
       <button onClick={signOut}>
         LOG OUT
       </button>

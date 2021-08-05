@@ -1,10 +1,8 @@
-import React from 'react'
-import { Checkbox } from './Checkbox'
+import React from "react"
+import { Checkbox } from "./Checkbox"
 
 export const Demo = () => {
-    return (
-        <Checkbox />
-    )
+    return <Checkbox />
 }
 
 export default Demo

@@ -1,56 +1,51 @@
-import React from 'react';
-import { Typography } from '@material-ui/core';
-import styled from 'styled-components'
-import { tokens } from '../../data/tokens'
+import React from "react";
+import styled from "styled-components";
+import { tokens } from "../../data/tokens";
+import { Typography } from "@material-ui/core";
 
-const calcColor = ({ inverse, importance }) => {
-    if (inverse && importance === 'primary') {
-        return tokens.highlight.white.strong;
-    }
+const COLORS = {
+  white: `rgb(${tokens.colors.white})`,
+  black: `rgb(${tokens.colors.black})`,
+  blackMedium: `rgba(${tokens.colors.black}, ${tokens.opacity.medium})`,
+  blackStronger: `rgba(${tokens.colors.black}, ${tokens.opacity.stronger})`,
+  blackStrong: `rgba(${tokens.colors.black}, ${tokens.opacity.strong})`,
+  whiteStrong: `rgba(${tokens.colors.white}, ${tokens.opacity.strong})`,
+  whiteStronger: `rgba(${tokens.colors.white}, ${tokens.opacity.stronger})`,
+};
 
-    if (inverse) {
-        return tokens.highlight.white.strong;
-    }
+const calcColor = ({ size, inverse }) => {
+  if ((size === "xl" || size === "l") && inverse) return COLORS.white;
+  if (size === "xl" || size === "l") return COLORS.blackStronger;
+  if (size === "m" && inverse) return COLORS.whiteStronger;
+  if (size === "m") return COLORS.blackStrong;
+  if (inverse) return COLORS.whiteStrong;
+  return COLORS.blackMedium;
+};
 
-    if (importance === 'primary') {
-        return tokens.colors.black.stronger;
-    }
-
-    return tokens.colors.black.medium;
-}
-
-const Base = styled(Typography)`
-    font-size: ${({ size }) => tokens.text[size].size};
-    letter-spacing: ${({ size }) => tokens.text[size].spacing};
-    font-weight: ${({ size }) => tokens.text[size].weight};
-    color: ${calcColor};
-    `
-
+const StyledTypography = styled(Typography)`
+  font-size: ${({ size }) => tokens.text[size].size};
+  font-weight: ${({ size }) => tokens.text[size].weight};
+  line-height: ${({ size }) => tokens.text[size].height};
+  letter-spacing: ${({ size }) => tokens.text[size].spacing};
+  color: ${calcColor};
+`;
 /**
- * 
+ *
  * @typedef {object} props
  * @property {JSX.Element} children
- * @property {'s' | 'm' | 'l'} size
+ * @property{'s' | 'm' | 'l' | 'xl'} size
  * @property {boolean} inverse
- * @property {'primary' | 'secondary'} importance
+ * @property {'p' | 'h1' | | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'} component
  */
 
 /**
- * @name Text
- * 
- * @description To render a paragraph or line of text meant for reading.
- * 
+ *
  * @param {props} props
+ * @returns {JSX.Element}
  */
 
 export const Text = (props) => {
-    const { size = 'm', inverse = false, importance = 'primary', children } = props;
-
-    return (
-        <Base size={size} inverse={inverse} importance={importance}>
-            {children}
-        </Base>
-    );
+  return <StyledTypography {...props} />;
 };
 
-export default Text
+export default Text;

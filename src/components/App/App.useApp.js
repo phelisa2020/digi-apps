@@ -4,7 +4,7 @@ import { users } from "../../api/users";
 
 export const useApp = () => {
   const history = useHistory();
-  const [loggedIn, setLoggedIn] = useState(null);
+  const [loggedIn, setLoggedIn] = useState(true);
 
   useEffect(() => {
     const determineLoggedIn = async () => {

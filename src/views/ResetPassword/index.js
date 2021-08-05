@@ -1,1 +1,1 @@
-export { default, ResetPassword } from './ResetPassword' 
+export { default, ResetPassword } from './ResetPassword'

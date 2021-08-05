@@ -1,17 +1,33 @@
 import React from "react";
-import Alert from "./Alert";
+import { Alert } from "./Alert";
 
 export const Demo = () => {
   return (
     <div>
-      <Alert title={"Hello World"} nature="validation" />
-      <Alert title={"Hello World"} nature="error" />
-      <Alert title={"Hello World"} nature="resolving" />
+      <Alert tittle="Hello World!" />
+      <Alert tittle="Hello World!" nature="validation" />
+      <Alert tittle="Hello World!" nature="error" />
+      <Alert tittle="Hello World!" nature="resolving" />
 
-      <Alert title={"Hello World"} nature="validation" description="This is a description message on a........." />
-      <Alert title={"Hello World"} nature="error" description="This is a description message on a........." />
-      <Alert title={"Hello World"} nature="resolving" description="This is a description message on a........." />
-
+      <Alert
+        tittle="Hello World!"
+        description="This is a descprition........."
+      />
+      <Alert
+        tittle="Hello World!"
+        nature="validation"
+        description="This is a descprition........."
+      />
+      <Alert
+        tittle="Hello World!"
+        nature="error"
+        description="This is a descprition........."
+      />
+      <Alert
+        tittle="Hello World!"
+        nature="resolving"
+        description="This is a descprition........."
+      />
     </div>
   );
 };

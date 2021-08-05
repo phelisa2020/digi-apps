@@ -11,7 +11,7 @@ export const Demo = () => {
   return (
     <div>
       <Wrapper>
-        <Layout title="Hello World"> Hello World</Layout>
+        <Layout title="Hello World">Hello World</Layout>
       </Wrapper>
 
       <Wrapper>
@@ -49,11 +49,10 @@ export const Demo = () => {
           extra={["extra", "#"]}
           alert={{
             tittle: 'Hello',
-            nature: 'resolving',
-            description: 'hello'
+            nature: 'resolving'
           }}
         >
-         Hello World
+          Hello World
         </Layout>
       </Wrapper>
 
@@ -66,10 +65,10 @@ export const Demo = () => {
           alert={{
             tittle: 'Hello',
             nature: 'error',
-            description: 'hello'
+            description: 'what ever'
           }}
         >
-         Hello World
+          Hello World
         </Layout>
       </Wrapper>
     </div>

@@ -29,7 +29,7 @@ export const SignIn = () => {
       alert={alert ? ALERTS[alert] : undefined}
       secondary={["Cancel", isResting && "/"]}
       primary={["Sign In", isResting && signIn]}
-//    extra={['Forgot Password?', isResting && '/auth/reset']}
+   extra={['Forgot Password?', isResting && '/auth/reset']}
    >
       <InputWrapper>
         <Input

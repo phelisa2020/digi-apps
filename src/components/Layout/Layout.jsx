@@ -9,7 +9,7 @@ import { useHistory } from "react-router-dom";
 
 const COLORS = {
   white: `rgb(${tokens.colors.white})`,
-  turquoise: `rgb(${tokens.colors.turquoise})`,
+  blue: `rgb(${tokens.colors.blue})`,
   whiteStronger: `rgb(${tokens.colors.white}) ${tokens.opacity.stronger})`,
   blackStrong: `rgb(${tokens.colors.black}) rgb(${tokens.opacity.strong})`,
 };
@@ -55,7 +55,7 @@ const NestedChildren = styled.div`
 `;
 
 const BaseWrap = styled.div`
-  background: ${({ inverse }) => (inverse ? COLORS.turquoise : COLORS.white)};
+  background: ${({ inverse }) => (inverse ? COLORS.blue : COLORS.white)};
   min-height: 100vh;
   display: flex;
   align-items: center;

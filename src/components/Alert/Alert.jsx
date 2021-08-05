@@ -16,15 +16,14 @@ const StyledAlert = styled(MuiAlert)`
   text-align: left;
 `;
 
-const DescriptionWrapper = styled.div`
+const DescriptionWrap = styled.div`
   padding-top: ${tokens.spacing.s};
 `;
 
 /**
- *
  * @typedef {object} props
  * @property {'error' | 'validation' | 'resolving'} nature
- * @property {string} title
+ * @property {string} tittle
  * @property {string} [description]
  */
 
@@ -34,7 +33,7 @@ const DescriptionWrapper = styled.div`
  */
 
 export const Alert = (props) => {
-  const { nature = "validation", title, description } = props;
+  const { nature = "validation", tittle, description } = props;
   const severity = SEVERITY_MAP[nature];
   const icon =
     nature === "resolving" ? (
@@ -43,11 +42,11 @@ export const Alert = (props) => {
 
   return (
     <StyledAlert severity={severity} icon={icon}>
-      <Text size={description ? 'l' : 's'}>{title}</Text>
+      <Text size={description ? "l" : "s"}>{tittle}</Text>
       {description && (
-        <DescriptionWrapper>
-          <Text size="s"> {description}</Text>
-        </DescriptionWrapper>
+        <DescriptionWrap>
+          <Text size="s">{description}</Text>
+        </DescriptionWrap>
       )}
     </StyledAlert>
   );

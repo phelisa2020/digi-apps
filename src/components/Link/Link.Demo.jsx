@@ -1,27 +1,23 @@
-import React from 'react'
-import { Link } from './Link'
-import styled from 'styled-components';
-import { tokens } from '../../data/tokens'
+import React from "react"
+import { Link } from "./Link"
+import styled from "styled-components";
+import tokens from "../../data/tokens";
 
-const DarkBackground = styled.div`
-    width: 100;
-  background: ${tokens.colors.blue.solid};
-`;
-
+const DarkBg = styled.div`
+width: 100%;
+background: rgb(${tokens.colors.blue})
+`
 
 export const Demo = () => {
-    return (
-        <div>
-        <Link action="#">Hello World!</Link>
-        <Link action={() => console.log('Fired')}>Hello World!</Link>
+    return <div>
+        <Link action='#'>Hello world!</Link>
+        <Link action={() => console.log("FIRED!")}>Hello world!</Link>
 
-        <DarkBackground>
-        <Link inverse action="#">Hello World!</Link>
-        <Link inverse action={() => console.log('Fired')}>Hello World!</Link>
- 
-        </DarkBackground>
-        </div>
-    )
+        <DarkBg>
+        <Link action='#'>Hello world!</Link>
+        <Link action={() => console.log("FIRED!")}>Hello world!</Link>
+        </DarkBg>
+    </div>
 }
 
 export default Demo
