@@ -1,27 +1,58 @@
 import React, { useContext } from "react";
-import { Switch, Route } from "react-router-dom";
-
+import { Switch, Route, Redirect } from "react-router-dom";
 import { context as authContext } from '../../hooks/useAuth'; 
 
-import { Demo as ButtonDemo } from "../Button/Button.Demo";
-import { Demo as CheckboxDemo } from "../Checkbox/Checkbox.Demo";
-import { Demo as ImageDemo } from "../Image/Image.Demo";
-import { Demo as InputDemo } from "../Input/Input.Demo";
-import { Demo as LayoutDemo } from "../Layout/Layout.Demo";
-import { Demo as LinkDemo } from "../Link/Link.Demo";
-import { Demo as TextDemo } from "../Text/Text.Demo";
-import { Demo as AlertDemo } from "../Alert/Alert.Demo";
+import { Demos } from './App.Demo';
+import { LandingPage } from "../../views/auth/LandingPage";
+import { NewAccount } from "../../views/auth/NewAccount";
+import { ResetPassword } from "../../views/auth/ResetPassword";
+import { SignIn } from "../../views/auth/SignIn";
+import { EmailSent } from "../../views/general/EmailSent";
+import UserSignIn from "../../views/auth/UserSignIn";
+import UserSelect from "../../views/auth/UserSelect";
 
-import { LandingPage } from "../../views/LandingPage";
-import { NewAccount } from "../../views/NewAccount";
-import { ResetPassword } from "../../views/ResetPassword";
-import { SignIn } from "../../views/SignIn";
-import { EmailSent } from "../../views/EmailSent";
-import { ItemsList } from "../../views/ItemsList";
+import { ItemsList } from "../../views/ItemsList"
+
+const Create = () => {
+  return (
+    <Switch>
+<Route path="/create/name">
+ <.. />
+ </Route>
+
+<Route path="/create/photo">
+<.. />
+</Route>
+
+<Route path="/create/sync">
+<.. />
+</Route>
+
+<Route path="/create/email">
+<.. />
+</Route>
+
+<Route path="/create/password">
+<.. />
+</Route>
+
+<Route path="/create/sent">
+<.../>
+</Route>
+
+</Switch>
+  )
+}
+
 
 const Demos = () => {
   return (
     <Switch>
+
+<Route path="/demo/item-preview">
+        <ItemPreview />
+      </Route>
+
       <Route path="/demo/button">
         <ButtonDemo />
       </Route>
@@ -38,9 +69,9 @@ const Demos = () => {
         <InputDemo />
       </Route>
 
-      <Route path="/demo/layout">
+      {/* <Route path="/demo/layout">
         <LayoutDemo />
-      </Route>
+      </Route> */}
 
       <Route path="/demo/link">
         <LinkDemo />
@@ -74,6 +105,14 @@ const Auth = () => {
 
       <Route path="/auth/sent">
         <EmailSent />
+      </Route>
+
+      <Route path="/auth/select">
+        <UserSelect />
+      </Route>
+
+      <Route path="/auth/auto">
+        <UserSignIn />
       </Route>
     </Switch>
   );
