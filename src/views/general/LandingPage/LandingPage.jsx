@@ -10,8 +10,8 @@ export const LandingPage = () => {
     <Layout
       inverse
       title="Digi App!"
-      secondary={["Sign In", "/auth/signin"]}
-      primary={["Create Account", "/auth/register"]}
+      secondary={["Sign In",!hasLocalUsers ? "/auth/signin" : 'auth/select']}
+      primary={["Create Account", "/create/name"]}
     />
      
   );
