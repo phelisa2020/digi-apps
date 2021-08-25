@@ -10,6 +10,7 @@ import UserSelect from "../../views/auth/UserSelect";
 export const Auth = () => {
   return (
     <Switch>
+    
       <Route path="/auth/signin">
         <SignIn />
       </Route>
@@ -26,7 +27,7 @@ export const Auth = () => {
         <UserSignIn />
       </Route>
 
-      <Route path="/recovery_token">
+       <Route path="/recovery_token">
         <div>ABC</div>
       </Route>
     </Switch>
