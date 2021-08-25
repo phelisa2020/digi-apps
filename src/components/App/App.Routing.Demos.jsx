@@ -1,6 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
+import { Demo as ItemPreview } from "../ItemPreview/ItemPreview.Demo";
 import { Demo as ButtonDemo } from '../Button/Button.Demo';
 import { Demo as CheckboxDemo } from '../Checkbox/Checkbox.Demo';
 import { Demo as ImageDemo } from "../Image/Image.Demo";
@@ -16,6 +17,10 @@ export const Demos = () => {
      <Route path="/demo/button">
          <ButtonDemo />
         </Route>
+
+        <Route path="/demo/item-preview">
+        <ItemPreview />
+      </Route>
 
             <Route path="/demo/checkbox">
                 <CheckboxDemo />

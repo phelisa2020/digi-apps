@@ -1,1 +1,1 @@
-export {default, CreatePhoto} from '../CreatePhoto'
+export {default, CreatePhoto} from './CreatePhoto'

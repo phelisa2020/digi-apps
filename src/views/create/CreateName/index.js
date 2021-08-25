@@ -1,1 +1,1 @@
-export {default, CreateName} from './CreateName'
+export {default, CreateName} from './CreateName';

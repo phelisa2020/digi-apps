@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router';
-import CreateEmail from '.';
 
 export const useCreateEmail = () => {
     const history = useHistory();

@@ -6,8 +6,8 @@ export const useCreateName = () => {
     const [name, setName] = useState('')
     const [alert, setAlert] = useState(null)
 
-    const save = ( ) => {
-        if (!name || name.trim() === '') return setAlert(" noName")
+    const save = () => {
+        if (!name || name.trim() === '') return setAlert("noName")
         history.push('/auth/photo') 
     }
 
