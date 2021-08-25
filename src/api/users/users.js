@@ -1,5 +1,6 @@
 import GoTrue from "gotrue-js";
 import { openDB } from "idb";
+import {v4 as createId } from 'uuid'
 
 const auth = new GoTrue({
   APIUrl: "https://digi-apps.netlify.app/.netlify/identity",
@@ -49,18 +50,39 @@ const createUsersApi = () => {
   };
 
   /**
+   * 
+   * @param {string} name 
+   * @param {Blob} image 
+   */
+
+  const createLocalAccount = async (name, image) => {
+     const db = await dbRequest;
+
+     const newAccount = {
+     id: createId(),
+      name,
+      image,
+      type: 'local',
+     }
+
+db.put('data', newAccount)
+  
+  }
+
+
+  /**
    * @param {string} email
    * @param {string} password
    * @returns {Promise<[boolean, null | 'emailAreadyUsed' | 'technical']>}
    */
 
-  const createAccount = async (email, password) => {
+  const changeToOnlineAccount = async (id, email, password) => {
     try {
       const db = await dbRequest;
-      const { id } = await auth.signup(email, password);
+      const { id: netlifyId } = await auth.signup(email, password);
 
       await db.put("meta", { id: "current", value: id });
-      await db.put("data", { id: id });
+      await db.put("data", { id, netlifyId, email, type: 'online' });
 
       await signIn(email, password);
       return [true, { id }];
@@ -152,11 +174,14 @@ const createUsersApi = () => {
     }
   };
 
+ 
+  
   return {
     getCurrent,
     getUsers,
     signOut,
-    createAccount,
+    changeToOnlineAccount,
+    createLocalAccount,
     signInWithToken,
     signIn,
     resetPassword,
