@@ -4,7 +4,7 @@ import { context as authContext } from "../../hooks/useAuth";
 
 import { Demos } from "./App.Routing.Demos";
 import { Auth } from "./App.Routing.Auth";
-// import { Create } from "./App.Routing.Create";
+import { Create } from "./App.Routing.Create";
 
 import { LandingPage } from "../../views/general/LandingPage";
 import { EmailSent } from "../../views/general/EmailSent";
@@ -39,9 +39,9 @@ export const Routing = () => {
         {user ? <Redirect to="/items/list" /> : <Auth />}
       </Route>
 
-      {/* <Route path="/create">
+      <Route path="/create">
         {user ? <Redirect to="/items/list" /> : <Create />}
-      </Route> */}
+      </Route>
 
       <Route path="/sent">
         <EmailSent />
