@@ -1,0 +1,14 @@
+{
+    "name": "Digi App",
+    "short_name": "Digi App",
+    "icons": [
+        {
+            "src": "/meta/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#5d2869",
+    "background_color": "#5d2869",
+    "display": "standalone"
+}
